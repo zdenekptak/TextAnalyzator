@@ -1,7 +1,7 @@
 logins = {"bob" : "bob123", "ann" : "ann123", "mike" : "mike123", "liz" : "liz123"}
 pozdrav = 'Welcome to the app. Please log in: '
 oddelovac = '-'
-delkaOddelovace = 50 * oddelovac
+delkaOddelovace = 70 * oddelovac
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer, 
 Fossil Butte is a ruggedly impressive 
@@ -40,60 +40,66 @@ print(delkaOddelovace)
 if logins.get(userName) == password:
     print('You are logged on!')
     print(delkaOddelovace)
+
+    print("We have 3 texts to be analyzed.")
+    cisloClanku = int(input("Enter a number btw. 1 and 3 to select: "))
+    print(delkaOddelovace)
+
+    titleCase = 0
+    lowerCase = 0
+    upperCase = 0
+    numeric = 0
+    soucetCisel = 0
+
+    splitText = TEXTS[cisloClanku-1].split()
+    splitTextWithout = []
+    for w in splitText:
+        stripWord = w.strip(',.')
+        splitTextWithout.append(stripWord)
+    
+    pocetSlov = len(splitTextWithout)
+    
+    print(f"There are {pocetSlov} words in the selected text.")
+
+    for st in splitTextWithout:
+        if st.istitle():
+            titleCase = titleCase + 1
+        elif st.islower():
+            lowerCase = lowerCase + 1
+        elif st.isupper():
+            upperCase = upperCase + 1
+        elif st.isnumeric():
+            numeric = numeric + 1 
+            soucetCisel = soucetCisel + int(st)
+
+
+
+    print(f"There are {titleCase} titlecase words")
+    print(f"There are {lowerCase} lowercase words")
+    print(f"There are {upperCase} uppercase words")
+    print(f"There are {numeric} numeric words")
+    print(delkaOddelovace)
+
+
+    cetnostSlovPodleDelky = {}
+    while splitTextWithout:
+        slovo = splitTextWithout.pop()
+        delkaSlova = len(slovo)
+
+            
+        if delkaSlova not in cetnostSlovPodleDelky:
+            cetnostSlovPodleDelky[delkaSlova] = 1
+        else:
+            cetnostSlovPodleDelky[delkaSlova] = cetnostSlovPodleDelky[delkaSlova] + 1
+
+
+    for delkaSlova, pocet in sorted(cetnostSlovPodleDelky.items()):
+        znak = "*"
+        print(f"{delkaSlova} {pocet*znak} {pocet}")
+
+    print(delkaOddelovace)
+    print(f"If we summed all the numbers in this text we would get: {soucetCisel}")
+    print(delkaOddelovace)
 else:
     print('Password or username incorrect')
     print(delkaOddelovace)
-
-    
-
-print("We have 3 texts to be analyzed.")
-cisloClanku = int(input("Enter a number btw. 1 and 3 to select: "))
-print(delkaOddelovace)
-
-titleCase = 0
-lowerCase = 0
-upperCase = 0
-numeric = 0
-soucetCisel = 0
-
-splitText = TEXTS[cisloClanku-1].split()
-pocetSlov = len(splitText)
-print(f"There are {pocetSlov} words in the selected text.")
-
-for st in splitText:
-    if st.istitle():
-        titleCase = titleCase + 1
-    elif st.islower():
-        lowerCase = lowerCase + 1
-    elif st.isupper():
-        upperCase = upperCase + 1
-    elif st.isnumeric():
-        numeric = numeric + 1 
-        soucetCisel = soucetCisel + int(st)
-
-        
-        
-print(f"There are {titleCase} titlecase words")
-print(f"There are {lowerCase} lowercase words")
-print(f"There are {upperCase} uppercase words")
-print(f"There are {numeric} numeric words")
-print(delkaOddelovace)
-
-
-cetnostSlovPodleDelky = {}
-while splitText:
-    slovo = splitText.pop()
-    delkaSlova = len(slovo)
-    if delkaSlova not in cetnostSlovPodleDelky:
-        cetnostSlovPodleDelky[delkaSlova] = 1
-    else:
-        cetnostSlovPodleDelky[delkaSlova] = cetnostSlovPodleDelky[delkaSlova] + 1
-
-
-for delkaSlova, pocet in sorted(cetnostSlovPodleDelky.items()):
-    znak = "*"
-    print(f"{delkaSlova} {pocet*znak} {pocet}")
-
-print(delkaOddelovace)
-print(f"If we summed all the numbers in this text we would get: {soucetCisel}")
-print(delkaOddelovace)
