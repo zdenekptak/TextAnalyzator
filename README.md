@@ -44,6 +44,8 @@ V textu, ze kterého byl vytvořen tento graf, je tedy pouze 1 jednopísmené sl
 Twin Creek Valley to an elevation of more
 than 7500 feet above sea level. The butte
 is located just north of US 30N"
+
+
 Po spuštění by program měl vypadat zhruba nějak takto:
 
 ----------------------------------------
@@ -73,4 +75,4 @@ There are 1 numeric strings
 ----------------------------------------
 If we summed all the numbers in this text we would get: 300.0
 ----------------------------------------
-D
+
