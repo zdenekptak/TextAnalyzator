@@ -36,6 +36,7 @@ Pokud se ti tento úkol bude zdát složitý, prověř, jestli zadané údaje js
  - 3 *************** 15
  - 4 ********* 9
  - 5 ********** 10
+
 V textu, ze kterého byl vytvořen tento graf, je tedy pouze 1 jednopísmené slovo, 11 slov složených ze dvou písmen, a tak dále.
 
 7. Program spočítá součet všech čísel (ne cifer!) v textu. Výsledkem tohoto součtu v následujícím textu by teby bylo číslo 8500:
