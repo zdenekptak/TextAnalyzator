@@ -46,33 +46,3 @@ than 7500 feet above sea level. The butte
 is located just north of US 30N"
 
 
-Po spuštění by program měl vypadat zhruba nějak takto:
-
-----------------------------------------
-Welcome to the app. Please log in:
-USERNAME: bob
-PASSWORD: 123
-----------------------------------------
-We have 3 texts to be analyzed.
-Enter a number btw. 1 and 3 to select: 2
-----------------------------------------
-There are 62 words in the selected text.
-There are 10 titlecase words
-There are 0 uppercase words
-There are 51 lowercase words
-There are 1 numeric strings
-----------------------------------------
- 2 ******* 7
- 3 ***************** 17
- 4 ********* 9
- 5 ********** 10
- 6 ******* 7
- 7 *** 3
- 8 ** 2
- 9 ***** 5
-10 * 1
-13 * 1
-----------------------------------------
-If we summed all the numbers in this text we would get: 300.0
-----------------------------------------
-
