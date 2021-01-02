@@ -12,12 +12,13 @@ Pojď se podívat, co všechno by tvůj program měl umět:
 
 Registrováni jsou následující uživatelé:
 
-| USER |   PASSWORD  |
+- | USER |   PASSWORD  |
 -----------------------
-| bob  |     123     |
-| ann  |    pass123  |
-| mike | password123 |
-| liz  |    pass123  |
+- | bob  |     123     |
+- | ann  |    pass123  |
+- | mike | password123 |
+- | liz  |    pass123  |
+
 Pokud se ti tento úkol bude zdát složitý, prověř, jestli zadané údaje jsou mezi registrovanými, ale neřeš spojení uživatel - heslo.
 
 4. Program nechá uživatele vybrat mezi třemi texty, uloženými v proměnné TEXTS.
