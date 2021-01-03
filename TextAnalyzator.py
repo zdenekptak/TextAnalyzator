@@ -89,9 +89,9 @@ if LOGINS.get(userName) == password:
     print(f"There are {len(digits)} numeric words")
     print(separators)
     
-    for delkaSlova, pocet in sorted(frequencies.items()):
-        znak = "*"
-        print(f"{delkaSlova} {pocet*znak} {pocet}")
+    for wordLength, count in sorted(frequencies.items()):
+        char = "*"
+        print(f"{wordLength} {count*char} {count}")
 
     print(separators)
     print(f"If we summed all the numbers in this text we would get: {sum(digits)}")
@@ -99,4 +99,3 @@ if LOGINS.get(userName) == password:
 else:
     print('Password or username incorrect')
     print(separators)
-
