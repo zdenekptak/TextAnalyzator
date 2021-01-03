@@ -1,7 +1,12 @@
-logins = {"bob" : "bob123", "ann" : "ann123", "mike" : "mike123", "liz" : "liz123"}
-pozdrav = 'Welcome to the app. Please log in: '
-oddelovac = '-'
-delkaOddelovace = 70 * oddelovac
+LOGINS = {
+    "bob" : "bob123", 
+    "ann" : "ann123", 
+    "mike" : "mike123", 
+    "liz" : "liz123"
+}
+
+separators = 70 * '-'
+
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer, 
 Fossil Butte is a ruggedly impressive 
@@ -32,34 +37,39 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-print(delkaOddelovace)
-print(pozdrav)
+print(separators)
+print('Welcome to the app. Please log in: ')
 userName = input("USERNAMRE: ")
 password = input("PASSWORD: ")
-print(delkaOddelovace)
-if logins.get(userName) == password:
+print(separators)
+if LOGINS.get(userName) == password:
     print('You are logged on!')
-    print(delkaOddelovace)
+    print(separators)
 
     print("We have 3 texts to be analyzed.")
-    cisloClanku = int(input("Enter a number btw. 1 and 3 to select: "))
-    print(delkaOddelovace)
+    existArticleNumbers = [1,2,3]
+    articleNumber = int(input("Enter a number btw. 1 and 3 to select: "))
+    while articleNumber not in existArticleNumbers:
+        articleNumber = int(input("Number is wrong. Enter again a number btw. 1 and 3 to select: "))
+        
+    print(separators)
 
     titleCase = 0
     lowerCase = 0
     upperCase = 0
     numeric = 0
-    soucetCisel = 0
+    sumOfNumbers = 0
 
-    splitText = TEXTS[cisloClanku-1].split()
+    splitText = TEXTS[articleNumber-1].split()
     splitTextWithout = []
+    
     for w in splitText:
         stripWord = w.strip(',.')
         splitTextWithout.append(stripWord)
     
-    pocetSlov = len(splitTextWithout)
+    numberWords = len(splitTextWithout)
     
-    print(f"There are {pocetSlov} words in the selected text.")
+    print(f"There are {numberWords} words in the selected text.")
 
     for st in splitTextWithout:
         if st.istitle():
@@ -70,36 +80,31 @@ if logins.get(userName) == password:
             upperCase = upperCase + 1
         elif st.isnumeric():
             numeric = numeric + 1 
-            soucetCisel = soucetCisel + int(st)
-
-
+            sumOfNumbers = sumOfNumbers + int(st)
 
     print(f"There are {titleCase} titlecase words")
     print(f"There are {lowerCase} lowercase words")
     print(f"There are {upperCase} uppercase words")
     print(f"There are {numeric} numeric words")
-    print(delkaOddelovace)
-
+    print(separators)
 
     cetnostSlovPodleDelky = {}
     while splitTextWithout:
         slovo = splitTextWithout.pop()
         delkaSlova = len(slovo)
-
-            
+           
         if delkaSlova not in cetnostSlovPodleDelky:
             cetnostSlovPodleDelky[delkaSlova] = 1
         else:
             cetnostSlovPodleDelky[delkaSlova] = cetnostSlovPodleDelky[delkaSlova] + 1
 
-
     for delkaSlova, pocet in sorted(cetnostSlovPodleDelky.items()):
         znak = "*"
         print(f"{delkaSlova} {pocet*znak} {pocet}")
 
-    print(delkaOddelovace)
+    print(separators)
     print(f"If we summed all the numbers in this text we would get: {soucetCisel}")
-    print(delkaOddelovace)
+    print(separators)
 else:
     print('Password or username incorrect')
-    print(delkaOddelovace)
+    print(separators)
