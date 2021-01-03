@@ -57,54 +57,46 @@ if LOGINS.get(userName) == password:
     titleCase = 0
     lowerCase = 0
     upperCase = 0
-    numeric = 0
-    sumOfNumbers = 0
+    digits = []
+    frequencies = {}
 
     splitText = TEXTS[articleNumber-1].split()
-    splitTextWithout = []
     
-    for w in splitText:
-        stripWord = w.strip(',.')
-        splitTextWithout.append(stripWord)
-    
-    numberWords = len(splitTextWithout)
+    numberWords = len(splitText)
     
     print(f"There are {numberWords} words in the selected text.")
 
-    for st in splitTextWithout:
-        if st.istitle():
+    for word in splitText:
+        word = word.strip(',.')
+        lengthWord = len(word)
+        if lengthWord not in frequencies:
+            frequencies[lengthWord] = 1
+        else:
+            frequencies[lengthWord] = frequencies[lengthWord] + 1
+        
+        if word.istitle():
             titleCase = titleCase + 1
-        elif st.islower():
+        elif word.islower():
             lowerCase = lowerCase + 1
-        elif st.isupper():
+        elif word.isupper():
             upperCase = upperCase + 1
-        elif st.isnumeric():
-            numeric = numeric + 1 
-            sumOfNumbers = sumOfNumbers + int(st)
+        elif word.isdigit():
+            digits.append(int(word))
 
     print(f"There are {titleCase} titlecase words")
     print(f"There are {lowerCase} lowercase words")
     print(f"There are {upperCase} uppercase words")
-    print(f"There are {numeric} numeric words")
+    print(f"There are {len(digits)} numeric words")
     print(separators)
-
-    cetnostSlovPodleDelky = {}
-    while splitTextWithout:
-        slovo = splitTextWithout.pop()
-        delkaSlova = len(slovo)
-           
-        if delkaSlova not in cetnostSlovPodleDelky:
-            cetnostSlovPodleDelky[delkaSlova] = 1
-        else:
-            cetnostSlovPodleDelky[delkaSlova] = cetnostSlovPodleDelky[delkaSlova] + 1
-
-    for delkaSlova, pocet in sorted(cetnostSlovPodleDelky.items()):
+    
+    for delkaSlova, pocet in sorted(frequencies.items()):
         znak = "*"
         print(f"{delkaSlova} {pocet*znak} {pocet}")
 
     print(separators)
-    print(f"If we summed all the numbers in this text we would get: {soucetCisel}")
+    print(f"If we summed all the numbers in this text we would get: {sum(digits)}")
     print(separators)
 else:
     print('Password or username incorrect')
     print(separators)
+
